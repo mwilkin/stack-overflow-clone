@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  private
   def question_params
     params.require(:question).permit(:name, :content, :votes)
   end
