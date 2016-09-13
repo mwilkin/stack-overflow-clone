@@ -1,10 +1,13 @@
 class QuestionsController < ApplicationController
+  before_filter :is_admin?, :only => :new
 
   def new
     @question = Question.new
   end
 
   def create
+
+
     @question = Question.new(question_params)
     @question.asker = current_user.email
     if @question.save

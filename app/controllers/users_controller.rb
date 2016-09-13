@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def is_admin?
+    return (current_user && current_user.admin == "Admin")
+  end
+
 private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :type)
