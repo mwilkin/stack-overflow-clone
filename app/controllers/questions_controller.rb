@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.asker = current_user.email
     if @question.save
       flash[:notice] = "New question saved!"
       redirect_to questions_path
@@ -24,7 +25,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:name, :content, :votes)
+    params.require(:question).permit(:name, :content, :votes, :asker)
   end
 
 end
