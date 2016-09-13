@@ -1,0 +1,10 @@
+<h1>index page</h1>
+
+<ul>
+
+  <% @questions.each do |question| %>
+    <li><%= link_to question.name, question_path(question) %>
+    </li>
+  <% end %>
+
+</ul>
